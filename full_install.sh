@@ -13,26 +13,25 @@ apt install kitty -y
 
 # Create kitty config dir and download conf files
 mkdir ~/.config/kitty/
-curl https://raw.githubusercontent.com/SolDoesTech/hyprland/main/kitty/kitty.conf > ~/.config/kitty/kitty.conf
-curl https://raw.githubusercontent.com/SolDoesTech/hyprland/main/kitty/mocha.conf > ~/.config/kitty/mocha.conf
+curl https://raw.githubusercontent.com/SolDoesTech/hyprland/main/kitty/kitty.conf -o ~/.config/kitty/kitty.conf
+curl https://raw.githubusercontent.com/SolDoesTech/hyprland/main/kitty/mocha.conf -o ~/.config/kitty/mocha.conf
 
 # Add build-essential and cmake
 apt install build-essential -y
 apt install cmake -y
 
 # Install rust and cargo
-curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh | exit
-
-source ~/.bashrc
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 
 # Install programs with cargo
-cargo install -q exa &
-cargo install -q zoxide &
-cargo install -q starship &
-cargo install -q bat &
+~/.cargo/bin/cargo install -q exa &
+~/.cargo/bin/cargo install -q zoxide &
+~/.cargo/bin/cargo install -q starship &
+~/.cargo/bin/cargo install -q bat &
 
 # Install starship config
-curl https://raw.githubusercontent.com/IRTD/helix-config/master/starship.toml > ~/.config/starship.toml
+touch ~/.config/starship.toml
+curl https://raw.githubusercontent.com/IRTD/helix-config/master/starship.toml -o ~/.config/starship.toml
 
 # Add starship eval
 echo 'eval "$(starship init bash)"' >> ~/.bashrc
